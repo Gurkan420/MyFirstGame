@@ -2,6 +2,9 @@ platform = {}
 player = {}
  
 function love.load()
+
+
+
         -- This is the height and the width of the platform.
 	platform.width = love.graphics.getWidth()    -- This makes the platform as wide as the whole game window.
 	platform.height = love.graphics.getHeight()  -- This makes the platform as tall as the whole game window.
@@ -33,6 +36,14 @@ function love.update(dt)
         
 
 	end
+
+    function love.keypressed( key )
+        player.jumpVel = -10
+        if key == ('w') and playerCanJump then
+          player.yvel = player.jumpVel
+          playerCanJump = false
+        end
+      end
 if love.keyboard.isDown('d') then
 		-- This makes sure that the character doesn't go pass the game window's right edge.
 		if player.x < (love.graphics.getWidth() - player.img:getWidth()) then
